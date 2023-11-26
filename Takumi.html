@@ -1,0 +1,2304 @@
+<html
+        xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>Jira</title>
+<style type="text/css">
+table {
+    mso-displayed-decimal-separator:"\.";
+    mso-displayed-thousand-separator:"\,";
+}
+body
+{
+    margin: 0px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color:black;
+}
+
+</style>
+<META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+<!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+<!--
+Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+since Excel does not use or save the css files it is hardcoded here.
+-->
+<style>
+@page
+{
+mso-page-orientation:landscape;
+margin:.25in .25in .5in .25in;
+mso-header-margin:.5in;
+mso-footer-margin:.25in;
+mso-footer-data:"&R&P of &N";
+mso-horizontal-page-align:center;
+mso-vertical-page-align:center;
+}
+
+td.issuekey,
+td.issuetype,
+td.status {
+    mso-style-parent: "";
+    mso-number-format: \@;
+    text-align: left;
+}
+br
+{
+    mso-data-placement:same-cell;
+}
+
+td
+{
+    vertical-align: top;
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook>
+<x:ExcelWorksheets>
+<x:ExcelWorksheet>
+<x:Name>general_report</x:Name>
+<x:WorksheetOptions>
+<x:Print>
+<x:ValidPrinterInfo/>
+</x:Print>
+</x:WorksheetOptions>
+</x:ExcelWorksheet>
+</x:ExcelWorksheets>
+</x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="#205081" height="30">
+        <td colspan="72">
+            <img src="https://jmigroup.atlassian.net/images/icon-jira-software-logo.png" width="57" height="30" border="0" alt="Jira">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="72">
+            <a href="https://jmigroup.atlassian.net/issues/?jql=project+%3D+%22TAK%22+ORDER+BY+created+DESC">Jira</a>
+        </td>
+    </tr>
+    <tr>
+                <td colspan="72">
+            Displaying <strong>17</strong> issues at <strong>26/Nov/23 9:21 AM</strong>.
+        </td>
+    </tr>
+</table>
+
+
+
+
+                                        <table id="issuetable" class="aui " border="1" cellpadding="3" cellspacing="1" width="100%">
+                        <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-project" data-id="project">
+                                                        Project
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                                                        Key
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                                                        Summary
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuetype" data-id="issuetype">
+                                                        Issue Type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                                                        Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                                                        Priority
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolution" data-id="resolution">
+                                                        Resolution
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                                                        Assignee
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                                                        Reporter
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-creator" data-id="creator">
+                                                        Creator
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                                                        Created
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-lastViewed" data-id="lastViewed">
+                                                        Last Viewed
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                                                        Updated
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolutiondate" data-id="resolutiondate">
+                                                        Resolved
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-versions" data-id="versions">
+                                                        Affects versions
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-fixVersions" data-id="fixVersions">
+                                                        Fix versions
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-components" data-id="components">
+                                                        Components
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-duedate" data-id="duedate">
+                                                        Due date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-votes" data-id="votes">
+                                                        Votes
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-watches" data-id="watches">
+                                                        Watchers
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-thumbnail" data-id="thumbnail">
+                                                        Images
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeoriginalestimate" data-id="timeoriginalestimate">
+                                                        Original estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeestimate" data-id="timeestimate">
+                                                        Remaining Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timespent" data-id="timespent">
+                                                        Time Spent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-workratio" data-id="workratio">
+                                                        Work Ratio
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-subtasks" data-id="subtasks">
+                                                        Sub-tasks
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuelinks" data-id="issuelinks">
+                                                        Linked Issues
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-environment" data-id="environment">
+                                                        Environment
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-description" data-id="description">
+                                                        Description
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-security" data-id="security">
+                                                        Security Level
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-progress" data-id="progress">
+                                                        Progress
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregateprogress" data-id="aggregateprogress">
+                                                        Σ Progress
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimespent" data-id="aggregatetimespent">
+                                                        Σ Time Spent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeestimate" data-id="aggregatetimeestimate">
+                                                        Σ Remaining Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeoriginalestimate" data-id="aggregatetimeoriginalestimate">
+                                                        Σ Original Estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-labels" data-id="labels">
+                                                        Labels
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statuscategorychangedate" data-id="statuscategorychangedate">
+                                                        Status Category Changed
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statusCategory" data-id="statusCategory">
+                                                        Status Category
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-parent" data-id="parent">
+                                                        Parent
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10009" data-id="customfield_10009">
+                                                        Actual end
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10008" data-id="customfield_10008">
+                                                        Actual start
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10003" data-id="customfield_10003">
+                                                        Approvers
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10031" data-id="customfield_10031">
+                                                        Atlas project key
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10032" data-id="customfield_10032">
+                                                        Atlas project status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10007" data-id="customfield_10007">
+                                                        Change reason
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10006" data-id="customfield_10006">
+                                                        Change risk
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10005" data-id="customfield_10005">
+                                                        Change type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10026" data-id="customfield_10026">
+                                                        Compass
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10013" data-id="customfield_10013">
+                                                        Epic Color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10014" data-id="customfield_10014">
+                                                        Epic Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10011" data-id="customfield_10011">
+                                                        Epic Name
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10012" data-id="customfield_10012">
+                                                        Epic Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10021" data-id="customfield_10021">
+                                                        Flagged
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10004" data-id="customfield_10004">
+                                                        Impact
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10017" data-id="customfield_10017">
+                                                        Issue color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10027" data-id="customfield_10027">
+                                                        Locked forms
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10028" data-id="customfield_10028">
+                                                        Open forms
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10002" data-id="customfield_10002">
+                                                        Organizations
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10018" data-id="customfield_10018">
+                                                        Parent Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10019" data-id="customfield_10019">
+                                                        Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10010" data-id="customfield_10010">
+                                                        Request Type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10020" data-id="customfield_10020">
+                                                        Sprint
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10015" data-id="customfield_10015">
+                                                        Start date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10033" data-id="customfield_10033">
+                                                        Story Points
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10016" data-id="customfield_10016">
+                                                        Story point estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10029" data-id="customfield_10029">
+                                                        Submitted forms
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10023" data-id="customfield_10023">
+                                                        Target end
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10022" data-id="customfield_10022">
+                                                        Target start
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10001" data-id="customfield_10001">
+                                                        Team
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10030" data-id="customfield_10030">
+                                                        Total forms
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10024" data-id="customfield_10024">
+                                                        [CHART] Date of First Response
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10000" data-id="customfield_10000">
+                                                        Development
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow10063" rel="10063" data-issuekey="TAK-17" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-17" href="https://jmigroup.atlassian.net/browse/TAK-17">TAK-17</a>
+</td>
+                                            <td class="summary"><p>
+                UNLIMITED LEVELS
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 10:46 AM </td>
+                                            <td class="lastViewed"> 26/Nov/23 9:21 AM </td>
+                                            <td class="updated"> 20/Nov/23 10:46 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10066/Screenshot+2023-11-20+at+10.44.38%E2%80%AFAM.png">
+            Screenshot 2023-11-20 at 10.44.38 AM.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 10:46 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000dz:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10062" rel="10062" data-issuekey="TAK-16" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-16" href="https://jmigroup.atlassian.net/browse/TAK-16">TAK-16</a>
+</td>
+                                            <td class="summary"><p>
+                Ensure that the &quot;Career&quot; page accurately displays the latest job circulars.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 10:33 AM </td>
+                                            <td class="lastViewed"> 20/Nov/23 10:42 AM </td>
+                                            <td class="updated"> 20/Nov/23 10:43 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10065/Carrer.png">
+            Carrer.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+<br/>
+The &quot;Career&quot; page should display the most recent job circulars prominently.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Hover “About” Present In Header<br/>
+# Then click “CAREER”<br/>
+# Compare the list of job circulars before and after sorting to confirm that the most recent ones are prominently displayed.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 10:33 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000dr:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10061" rel="10061" data-issuekey="TAK-15" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-15" href="https://jmigroup.atlassian.net/browse/TAK-15">TAK-15</a>
+</td>
+                                            <td class="summary"><p>
+                Ensure that each section on the FAQ page contains unique and relevant content.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            farzad rabbani
+    </td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 10:27 AM </td>
+                                            <td class="lastViewed"> 20/Nov/23 10:47 AM </td>
+                                            <td class="updated"> 20/Nov/23 10:47 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10062/faq+01.png">
+            faq 01.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+<br/>
+The content in each section should provide relevant information specific to the category or topic it addresses.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Hover “About” Present In Header<br/>
+# Then click “FAQ”<br/>
+# Verify that each section addresses different topics or questions.<br/>
+# Check for any duplicate questions or information across sections.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 10:27 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000dj:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10060" rel="10060" data-issuekey="TAK-14" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-14" href="https://jmigroup.atlassian.net/browse/TAK-14">TAK-14</a>
+</td>
+                                            <td class="summary"><p>
+                Verify that the &quot;Filter By Price&quot; functionality on the website filters products based on the selected price range.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 10:17 AM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 20/Nov/23 10:17 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Preconditions:*<br/>
+<br/>
+        Ensure that there are products available on the website with varying price ranges.<br/>
+<br/>
+*Expected Result*<br/>
+<br/>
+Ensure that the displayed products are categorised as food items and are not related to the previously searched product.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Scroll Items Present In Header<br/>
+# Then click “FOODS”<br/>
+# Choose a different price range (e.g., ৳50 - ৳800).<br/>
+# Click  “filter” Button.<br/>
+# Observe the product list to ensure that only products within the new selected price range are displayed.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 10:17 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000db:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10059" rel="10059" data-issuekey="TAK-13" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-13" href="https://jmigroup.atlassian.net/browse/TAK-13">TAK-13</a>
+</td>
+                                            <td class="summary"><p>
+                Verify that refreshing the page after searching for a specific product results in displaying all food products.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 10:11 AM </td>
+                                            <td class="lastViewed"> 20/Nov/23 10:14 AM </td>
+                                            <td class="updated"> 20/Nov/23 10:11 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+<br/>
+Ensure that the displayed products are categorised as food items and are not related to the previously searched product.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Scroll Items Present In Header<br/>
+# Then click “FOODS”<br/>
+# Search for any food item<br/>
+# Refresh the page using the browser&#39;s refresh button
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 10:11 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000d3:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10058" rel="10058" data-issuekey="TAK-12" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-12" href="https://jmigroup.atlassian.net/browse/TAK-12">TAK-12</a>
+</td>
+                                            <td class="summary"><p>
+                Verify that the Instagram icon on the webpage connects to the correct Instagram page associated with the website
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 10:03 AM </td>
+                                            <td class="lastViewed"> 20/Nov/23 10:43 AM </td>
+                                            <td class="updated"> 20/Nov/23 10:03 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10061/Instagram.png">
+            Instagram.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+<br/>
+Ensure that the Instagram page is correctly associated with the website and contains pertinent information.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Scroll down<br/>
+# Go footer<br/>
+# Click the Instagram icon
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 10:03 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000cv:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10057" rel="10057" data-issuekey="TAK-11" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-11" href="https://jmigroup.atlassian.net/browse/TAK-11">TAK-11</a>
+</td>
+                                            <td class="summary"><p>
+                Verify that the LinkedIn icon on the webpage connects to the correct LinkedIn page associated with the website
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 10:01 AM </td>
+                                            <td class="lastViewed"> 20/Nov/23 11:00 AM </td>
+                                            <td class="updated"> 20/Nov/23 10:01 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10060/+LinkedIn.png">
+             LinkedIn.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+<br/>
+Ensure that the LinkedIn page is correctly associated with the website and contains pertinent information.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Scroll down<br/>
+# Go footer<br/>
+# Click the LinkedIn icon
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 10:01 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000cn:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10056" rel="10056" data-issuekey="TAK-10" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-10" href="https://jmigroup.atlassian.net/browse/TAK-10">TAK-10</a>
+</td>
+                                            <td class="summary"><p>
+                Verify that the Twitter icon on the webpage directs to the correct Twitter page associated with the website.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            farzad rabbani
+    </td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 10:00 AM </td>
+                                            <td class="lastViewed"> 20/Nov/23 10:46 AM </td>
+                                            <td class="updated"> 20/Nov/23 10:46 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10059/Twitter.png">
+            Twitter.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+<br/>
+Ensure that the Twitter page is correctly associated with the website and contains pertinent information.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Scroll down<br/>
+# Go footer<br/>
+# Click the Twitter icon
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 10:00 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000cf:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10055" rel="10055" data-issuekey="TAK-9" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-9" href="https://jmigroup.atlassian.net/browse/TAK-9">TAK-9</a>
+</td>
+                                            <td class="summary"><p>
+                Verify that the &quot;Privacy Policy&quot; link connects to the proper page containing the privacy policy of the website
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            MOHAMMAD SUMON
+    </td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 9:54 AM </td>
+                                            <td class="lastViewed"> 20/Nov/23 10:46 AM </td>
+                                            <td class="updated"> 20/Nov/23 10:46 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10058/Privacy+Policy.png">
+            Privacy Policy.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+<br/>
+Ensure that the content on the page is relevant to the Privacy Policy of the website.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Scroll down<br/>
+# Go footer<br/>
+# Click “ Privacy Policy“
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 9:54 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000c7:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10054" rel="10054" data-issuekey="TAK-8" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-8" href="https://jmigroup.atlassian.net/browse/TAK-8">TAK-8</a>
+</td>
+                                            <td class="summary"><p>
+                Verify that the &#39;Terms &amp; Conditions&#39; link connects to the proper page containing the terms and conditions of the website.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">            MOHAMMAD SUMON
+    </td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 9:51 AM </td>
+                                            <td class="lastViewed"> 20/Nov/23 10:47 AM </td>
+                                            <td class="updated"> 20/Nov/23 10:47 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10057/Terms+%26+Conditions.png">
+            Terms & Conditions.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+<br/>
+Ensure that the content on the page is relevant to the Terms &amp; Conditions of the website.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Scroll down<br/>
+# Go footer<br/>
+# Click Terms &amp; Conditions 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 9:51 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000bz:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10053" rel="10053" data-issuekey="TAK-7" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-7" href="https://jmigroup.atlassian.net/browse/TAK-7">TAK-7</a>
+</td>
+                                            <td class="summary"><p>
+                Your sentence is already correct:  &quot;Verify that the &#39;About&#39; link connects to the proper page containing information about the website.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 9:45 AM </td>
+                                            <td class="lastViewed"> 20/Nov/23 9:45 AM </td>
+                                            <td class="updated"> 20/Nov/23 9:50 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10056/About.png">
+            About.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+<br/>
+Ensure that the content provides pertinent information about the website.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Scroll down<br/>
+# Go footer<br/>
+# Click About 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 9:45 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000br:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10052" rel="10052" data-issuekey="TAK-6" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-6" href="https://jmigroup.atlassian.net/browse/TAK-6">TAK-6</a>
+</td>
+                                            <td class="summary"><p>
+                Ensure that the user can successfully login by using the &quot;Log in&quot; button on the website.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 20/Nov/23 9:15 AM </td>
+                                            <td class="lastViewed"> 20/Nov/23 9:51 AM </td>
+                                            <td class="updated"> 20/Nov/23 9:51 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        TAK-5                        </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# click login button present the header<br/>
+# Fill up Email address and Password<br/>
+# Click the “Log in “ button
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 20/Nov/23 9:15 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000bj:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10051" rel="10051" data-issuekey="TAK-5" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-5" href="https://jmigroup.atlassian.net/browse/TAK-5">TAK-5</a>
+</td>
+                                            <td class="summary"><p>
+                Ensure that the user can successfully register by using the &quot;Register&quot; button on the website.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Highest
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 19/Nov/23 2:13 PM </td>
+                                            <td class="lastViewed"> 20/Nov/23 9:51 AM </td>
+                                            <td class="updated"> 20/Nov/23 9:51 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10055/Register.png">
+            Register.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks">                                        TAK-6                        </td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Test Steps<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# click login button present the header<br/>
+# then click Don’t have account below the from.<br/>
+# Input all information<br/>
+# Click the &quot;Register&quot; button.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 19/Nov/23 2:13 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000bb:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10050" rel="10050" data-issuekey="TAK-4" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-4" href="https://jmigroup.atlassian.net/browse/TAK-4">TAK-4</a>
+</td>
+                                            <td class="summary"><p>
+                Ensure that the copyright years displayed in the footer of the web page are accurate and up-to-date.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 19/Nov/23 2:08 PM </td>
+                                            <td class="lastViewed"> 20/Nov/23 9:52 AM </td>
+                                            <td class="updated"> 19/Nov/23 2:08 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10054/footer+year.png">
+            footer year.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result* <br/>
+<br/>
+The current year is included in the copyright information.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Scroll down to check footer
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 19/Nov/23 2:08 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000b3:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10049" rel="10049" data-issuekey="TAK-3" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-3" href="https://jmigroup.atlassian.net/browse/TAK-3">TAK-3</a>
+</td>
+                                            <td class="summary"><p>
+                Ensure that the web page content is correct, coherent, and free from spelling or grammatical errors.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 19/Nov/23 2:00 PM </td>
+                                            <td class="lastViewed"> 20/Nov/23 9:52 AM </td>
+                                            <td class="updated"> 19/Nov/23 2:08 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10053/spelling.png">
+            spelling.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Scroll down to check footer
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 19/Nov/23 2:00 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000av:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10048" rel="10048" data-issuekey="TAK-2" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-2" href="https://jmigroup.atlassian.net/browse/TAK-2">TAK-2</a>
+</td>
+                                            <td class="summary"><p>
+                Ensure that the &quot;Book a Table&quot; button on the restaurant reservation page functions correctly by initiating the table reservation process.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 19/Nov/23 1:57 PM </td>
+                                            <td class="lastViewed"> &nbsp; </td>
+                                            <td class="updated"> 19/Nov/23 1:57 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10052/Book+a+Table.png">
+            Book a Table.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+Users can book a table by clicking the &quot;Book a Table&quot; button.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser<br/>
+# Search Takumibd<br/>
+# Clicking on the “Book a Table”
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 19/Nov/23 1:57 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000an:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10047" rel="10047" data-issuekey="TAK-1" class="issuerow">
+                                            <td class="project">    Takumibd
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAK-1" href="https://jmigroup.atlassian.net/browse/TAK-1">TAK-1</a>
+</td>
+                                            <td class="summary"><p>
+                Ensure that the &quot;Add to Cart&quot; button on the product page functions correctly by adding the selected product to the shopping cart.
+    </p>
+</td>
+                                            <td class="issuetype">    Bug
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;To Do&lt;/span&gt;">To Do</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Unresolved</em>
+</td>
+                                            <td class="assignee">    <em>Unassigned</em>
+</td>
+                                            <td class="reporter">            MOHAMMAD SUMON
+    </td>
+                                            <td class="creator">            MOHAMMAD SUMON
+    </td>
+                                            <td class="created"> 19/Nov/23 1:46 PM </td>
+                                            <td class="lastViewed"> 20/Nov/23 9:52 AM </td>
+                                            <td class="updated"> 19/Nov/23 1:53 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail">            <a href="https://jmigroup.atlassian.net/secure/attachment/10051/Add+to+Cart.png">
+            Add to Cart.png
+        </a>
+    </td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      *Expected Result*<br/>
+The product should be added to the shopping cart successfully.<br/>
+<br/>
+*Test Steps*<br/>
+<br/>
+# Open Browser <br/>
+# Search Takumibd<br/>
+# Add to Cart
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 19/Nov/23 1:46 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">To Do</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10031"></td>
+                                            <td class="customfield_10032"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10027"></td>
+                                            <td class="customfield_10028"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i000af:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10029"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001">    None
+</td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+        </tbody>
+    </table>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#dddddd" colspan="72"><font size="1">
+        Generated at Sun Nov 26 03:21:29 UTC 2023 by MOHAMMAD SUMON using Jira 1001.0.0-SNAPSHOT#100242-sha1:cfa489161742104fca02f9e695a57464d2641868.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
